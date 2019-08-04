@@ -1,6 +1,8 @@
 language: java
+before_install:
+  - curl -sSL https://raw.githubusercontent.com/cljs-oss/canary/master/scripts/install-canary.sh | bash
 install: make deps
-script: make clean test
+script: make clean test-utc
 jdk:
   - openjdk8
   - openjdk11

@@ -3,8 +3,8 @@
 (def +description+ "A clj-time inspired date library for clojurescript.")
 
 (def dependencies
-  '[[org.clojure/clojure "1.8.0" :scope "provided"]
-    [org.clojure/clojurescript "1.10.439" :scope "provided"]])
+  (template [[org.clojure/clojure "1.8.0" :scope "provided"]
+            [org.clojure/clojurescript ~(or (System/getenv "CANARY_CLOJURESCRIPT_VERSION") "1.10.439") :scope "provided"]]))
 
 (def dev-dependencies
   '[[org.clojure/tools.nrepl "0.2.12" :scope "test" :exclusions [org.clojure/clojure]]
@@ -31,7 +31,7 @@
  '[crisptrutski.boot-cljs-test :refer [test-cljs]]
  '[codox.boot :refer [codox]]
  '[parse-perf-test :as perf]
- 'cljs.repl 'cljs.repl.node 'cljs.repl.rhino)
+ 'cljs.repl 'cljs.repl.node)
 
 (defn documentation-namespaces []
   (->> "src"
